@@ -17,12 +17,11 @@
     # inputs.nix-colors.homeManagerModules.default
 
     # You can also split up your configuration and import pieces of it here:
-    # ./nvim.nix
     ./git.nix
+    ./neovim.nix
   ];
 
   nixpkgs = {
-    # You can add overlays here
     overlays = [
       # Add overlays your own flake exports (from overlays and pkgs dir):
       outputs.overlays.stable
@@ -39,34 +38,43 @@
       #   });
       # })
     ];
-    # Configure your nixpkgs instance
     config = {
-      # Disable if you don't want unfree packages
       allowUnfree = true;
     };
+  };
+
+  nix = {
+    package = lib.mkDefault pkgs.nix;
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+        "ca-derivations"
+      ];
+      warn-dirty = false;
+    };
+  };
+
+  systemd.user.startServices = "sd-switch";
+
+  programs = {
+    home-manager.enable = true;
+    git.enable = true;
   };
 
   home = {
     username = "vollow";
     homeDirectory = "/home/vollow";
+    stateVersion = "24.11";
   };
 
-  # Add stuff for your user as you see fit:
-  programs.neovim.enable = true;
   home.packages = with pkgs; [
     speedtest-cli
 
     lua-language-server
 
     steam
+    obs-studio
     qq
   ];
-
-  programs.home-manager.enable = true;
-
-  # Nicely reload system units when changing configs
-  systemd.user.startServices = "sd-switch";
-
-  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "24.11";
 }
