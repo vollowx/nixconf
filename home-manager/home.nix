@@ -25,11 +25,12 @@
     # You can add overlays here
     overlays = [
       # Add overlays your own flake exports (from overlays and pkgs dir):
+      outputs.overlays.stable
       outputs.overlays.additions
       outputs.overlays.modifications
 
       # You can also add overlays exported from other flakes:
-      inputs.neovim-nightly-overlay.overlays.default
+      # neovim-nightly-overlay.overlays.default
 
       # Or define it inline, for example:
       # (final: prev: {
