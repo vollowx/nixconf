@@ -46,11 +46,7 @@
   nix = {
     package = lib.mkDefault pkgs.nix;
     settings = {
-      experimental-features = [
-        "nix-command"
-        "flakes"
-        "ca-derivations"
-      ];
+      experimental-features = ["nix-command" "flakes"];
       warn-dirty = false;
     };
   };
@@ -69,12 +65,17 @@
   };
 
   home.packages = with pkgs; [
+    gnumake
+    gcc
+    nodejs
+    lua-language-server
     speedtest-cli
 
-    lua-language-server
-
-    steam
     obs-studio
     qq
+
+    steam
+    mindustry
+    prismlauncher
   ];
 }

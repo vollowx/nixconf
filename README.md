@@ -1,6 +1,6 @@
 # nixconf
 
-_Configurations for my NixOS_
+_Configuration for my NixOS_
 
 ## TODOs
 

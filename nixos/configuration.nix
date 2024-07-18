@@ -1,25 +1,24 @@
 # nixos-help
 # man 5 configuration.nix
 # https://search.nixos.org/options
-
-{ config, lib, pkgs, ... }:
-
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "neon"; # Define your hostname.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.hostName = "neon";
+  networking.networkmanager.enable = true;
 
-  # Set your time zone.
   time.timeZone = "Asia/Shanghai";
 
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
   # console = {
   #   font = "Lat2-Terminus16";
@@ -27,11 +26,16 @@
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
-  environment.pathsToLink = [ "/libexec" ];
+  environment.pathsToLink = ["/libexec"];
 
-  # Enable the X11 windowing system.
-  services.displayManager.defaultSession = "none+i3";
   services.xserver.enable = true;
+  services.xserver.xkb.layout = "us";
+  # services.xserver.xkb.options = "eurosign:e,caps:escape";
+  services.libinput.enable = true;
+  services.libinput.touchpad = {
+    naturalScrolling = true;
+  };
+  services.displayManager.defaultSession = "none+i3";
   services.xserver.windowManager.i3 = {
     enable = true;
     extraPackages = with pkgs; [
@@ -41,48 +45,27 @@
       i3blocks
       alacritty
       firefox
-
-      mindustry
-      prismlauncher
     ];
   };
 
-  
-
-  # Configure keymap in X11
-  # services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
-
-  # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  # Enable sound.
-  hardware.pulseaudio.enable = true;
-  # OR
-  # services.pipewire = {
-  #   enable = true;
-  #   pulse.enable = true;
-  # };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  services.libinput.enable = true;
-  services.libinput.touchpad = {
-    naturalScrolling = true;
+  services.pipewire = {
+    enable = true;
+    pulse.enable = true;
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.vollow = {
     isNormalUser = true;
     home = "/home/vollow";
     createHome = true;
     description = "Vollow";
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = ["wheel" "networkmanager"];
     packages = with pkgs; [
     ];
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  # nix search wget
   environment.systemPackages = with pkgs; [
     neovim
     wget
@@ -102,6 +85,8 @@
 
   # List services that you want to enable:
 
+  services.v2raya.enable = true;
+
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
@@ -116,11 +101,33 @@
   # accidentally delete configuration.nix.
   # system.copySystemConfiguration = true;
 
-  nix.settings.substituters = [ "https://mirror.sjtu.edu.cn/nix-channels/store" ];
+  nix = {
+    package = pkgs.nix;
+
+    settings = {
+      extra-substituters = lib.mkAfter ["https://mirror.sjtu.edu.cn/nix-channels/store"];
+      trusted-users = [
+        "root"
+        "@wheel"
+      ];
+      auto-optimise-store = lib.mkDefault true;
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      warn-dirty = false;
+      flake-registry = ""; # Disable global flake registry
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      # Keep the last 3 generations
+      options = "--delete-older-than +3";
+    };
+  };
 
   # man configuration.nix
   # https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion
   # Or simpler, do NOT modify.
   system.stateVersion = "24.11";
-
 }
