@@ -3,6 +3,7 @@
     ./global
     ./features/desktop/i3
     ./features/games
+    ./features/games/osu.nix
   ];
 
   home.packages = with pkgs; [
