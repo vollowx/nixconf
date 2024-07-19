@@ -8,7 +8,7 @@
           "Noto Sans Mono CJK SC"
           "Noto Color Emoji"
         ];
-        sansSerif = ["FireSans" "Noto Sans" "Noto Sans CJK SC" "Noto Color Emoji"];
+        sansSerif = ["Fira Sans" "Noto Sans" "Noto Sans CJK SC" "Noto Color Emoji"];
         serif = ["Noto Serif" "Noto Serif CJK SC" "Noto Color Emoji"];
         emoji = ["Noto Color Emoji"];
       };
