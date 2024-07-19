@@ -40,9 +40,7 @@
   services.displayManager = {
     defaultSession = "none+i3";
   };
+  services.libinput.touchpad.naturalScrolling = true;
 
-  # man configuration.nix
-  # https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion
-  # Or simpler, do NOT modify.
   system.stateVersion = "24.11";
 }
