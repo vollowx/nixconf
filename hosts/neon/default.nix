@@ -20,46 +20,25 @@
 
   networking.hostName = "neon";
 
-  environment.pathsToLink = ["/libexec"];
-
-  services.xserver.enable = true;
-  services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
-  services.libinput.enable = true;
-  services.libinput.touchpad = {
-    naturalScrolling = true;
-  };
-  services.displayManager.defaultSession = "none+i3";
-  services.xserver.windowManager.i3 = {
-    enable = true;
-    extraPackages = with pkgs; [
-      dmenu
-      i3status
-      i3lock
-      i3blocks
-      alacritty
-      firefox
+  boot = {
+    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
+    binfmt.emulatedSystems = [
+      "aarch64-linux"
+      "i686-linux"
     ];
   };
 
-  services.printing.enable = true;
+  programs = {
+    adb.enable = true;
+    dconf.enable = true;
+  };
 
-  # nix search wget
-  environment.systemPackages = with pkgs; [
-    neovim
-    wget
-    eza
-    bat
-    dust
-    htop
-  ];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  programs.mtr.enable = true;
-  programs.gnupg.agent = {
+  services.xserver = {
     enable = true;
-    enableSSHSupport = true;
+    windowManager.i3.enable = true;
+  };
+  services.displayManager = {
+    defaultSession = "none+i3";
   };
 
   # man configuration.nix

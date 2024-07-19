@@ -1,6 +1,8 @@
 {pkgs, ...}: {
   imports = [
     ./global
+    ./features/desktop/i3
+    ./features/games
   ];
 
   home.packages = with pkgs; [
@@ -15,9 +17,5 @@
     obs-studio
     neovide
     qq
-
-    steam
-    mindustry
-    prismlauncher
   ];
 }

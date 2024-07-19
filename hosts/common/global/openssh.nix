@@ -1,10 +1,4 @@
 {
-  outputs,
-  lib,
-  config,
-  pkgs,
-  ...
-}: {
   services.openssh = {
     enable = true;
     settings = {
@@ -15,8 +9,6 @@
       StreamLocalBindUnlink = "yes";
       # Allow forwarding ports to everywhere
       GatewayPorts = "clientspecified";
-      # Let WAYLAND_DISPLAY be forwarded
-      AcceptEnv = "WAYLAND_DISPLAY";
     };
   };
 }

@@ -8,8 +8,8 @@
 }: {
   imports =
     [
-      ../features/git.nix
-      ../features/neovim.nix
+      ../features/cli
+      ../features/neovim
     ]
     ++ (builtins.attrValues outputs.homeManagerModules);
 
