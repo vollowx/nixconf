@@ -1,3 +1,6 @@
-{
-  programs.neovim.enable = true;
+{pkgs, ...}: {
+  programs.neovim = {
+    enable = true;
+    package = pkgs.inputs.neovim-nightly-overlay.neovim;
+  };
 }

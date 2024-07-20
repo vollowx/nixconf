@@ -1,3 +1,3 @@
 {pkgs, ...}: {
-  home.packages = [pkgs.osu-lazer];
+  home.packages = [pkgs.osu-lazer-bin];
 }
