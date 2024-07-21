@@ -17,6 +17,7 @@
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nekowinston-nur.url = "github:nekowinston/nur";
   };
 
   outputs =

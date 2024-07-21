@@ -18,5 +18,12 @@ in
   dconf.settings."org/gnome/desktop/interface".color-scheme =
     if is_dark then "prefer-dark" else "prefer-light";
 
+  home.pointerCursor = {
+    name = "macOS-Monterey";
+    package = pkgs.apple-cursor;
+    gtk.enable = true;
+    size = 24;
+  };
+
   xdg.portal.enable = true;
 }
