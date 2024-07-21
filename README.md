@@ -2,12 +2,13 @@
 
 _Configuration for my NixOS_
 
-## TODOs
+## TO-DOs
 
 - [x] Separate per machine configs under `nixos` and `home-manager`
 - [x] Bring Neovim configs back :UPDATE: through `vollowx/nvimconf`
-- [ ] Set up Steam and Proton at `features/games`
+- [ ] Setup Steam and Proton at `features/games`
 - [ ] Add a GUI file manager
-- [x] Add CJK, emoji and monospace fonts
-- [ ] Separate i3wm import to `hosts/optional`
+- [x] Add CJK, emoji and mono-space fonts
+- [ ] Separate i3 WM import to `hosts/optional`
 - [ ] Add `apple_cursor`
+- [ ] Setup `distrobox`

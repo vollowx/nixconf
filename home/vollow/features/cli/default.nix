@@ -17,6 +17,8 @@
     comma # Install and run programs by sticking a , before them
     distrobox # Nice escape hatch, integrates docker images with my environment
     nh # Nice wrapper for NixOS and HM
+    nvd # Diff viewer for nh
+    nom # Process monitor for nh
 
     bc # Calculator
     bottom # System viewer
@@ -43,7 +45,7 @@
     nixfmt-rfc-style # Nix formatter
     ltex-ls # Spell checking LSP
 
-    gitu
+    lazygit
     speedtest-cli # Network speedtest by Ookla
   ];
 }
