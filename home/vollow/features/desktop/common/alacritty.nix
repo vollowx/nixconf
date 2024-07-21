@@ -4,8 +4,8 @@
     settings = {
       window = {
         padding = {
-          x = 10;
-          y = 10;
+          x = 8;
+          y = 8;
         };
         dynamic_padding = true;
       };
