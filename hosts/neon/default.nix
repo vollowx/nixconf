@@ -1,13 +1,13 @@
-# nixos-help
-# man 5 configuration.nix
-# https://search.nixos.org/options
 {
-  config,
-  lib,
   pkgs,
+  inputs,
   ...
 }: {
   imports = [
+    inputs.hardware.nixosModules.common-cpu-intel
+    inputs.hardware.nixosModules.common-gpu-intel
+    inputs.hardware.nixosModules.common-pc-ssd
+
     ./hardware.nix
 
     ../common/global
@@ -31,6 +31,23 @@
   programs = {
     adb.enable = true;
     dconf.enable = true;
+  };
+
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+    extraPackages = with pkgs; [
+      intel-ocl
+      intel-media-driver
+
+      libva
+      libva-vdpau-driver
+      libvdpau-va-gl
+
+      vulkan-loader
+      vulkan-validation-layers
+      vulkan-extension-layer
+    ];
   };
 
   services.xserver = {
