@@ -1,20 +1,15 @@
+{ inputs, outputs, ... }:
 {
-  inputs,
-  outputs,
-  ...
-}: {
-  imports =
-    [
-      inputs.home-manager.nixosModules.home-manager
-      ./systemd-initrd.nix
-      ./fish.nix
-      ./locale.nix
-      ./nix.nix
-      ./openssh.nix
-      ./network.nix
-      ./steam-hardware.nix
-    ]
-    ++ (builtins.attrValues outputs.nixosModules);
+  imports = [
+    inputs.home-manager.nixosModules.home-manager
+    ./systemd-initrd.nix
+    ./fish.nix
+    ./locale.nix
+    ./nix.nix
+    ./openssh.nix
+    ./network.nix
+    ./steam-hardware.nix
+  ] ++ (builtins.attrValues outputs.nixosModules);
 
   home-manager.useGlobalPkgs = true;
   home-manager.extraSpecialArgs = {

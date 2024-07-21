@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   fonts = {
     fontconfig = {
       enable = true;
@@ -8,9 +9,18 @@
           "Noto Sans Mono CJK SC"
           "Noto Color Emoji"
         ];
-        sansSerif = ["Fira Sans" "Noto Sans" "Noto Sans CJK SC" "Noto Color Emoji"];
-        serif = ["Noto Serif" "Noto Serif CJK SC" "Noto Color Emoji"];
-        emoji = ["Noto Color Emoji"];
+        sansSerif = [
+          "Fira Sans"
+          "Noto Sans"
+          "Noto Sans CJK SC"
+          "Noto Color Emoji"
+        ];
+        serif = [
+          "Noto Serif"
+          "Noto Serif CJK SC"
+          "Noto Color Emoji"
+        ];
+        emoji = [ "Noto Color Emoji" ];
       };
     };
   };
@@ -21,6 +31,6 @@
     noto-fonts-extra
     noto-fonts-emoji
     fira-sans
-    (nerdfonts.override {fonts = ["FiraCode"];})
+    (nerdfonts.override { fonts = [ "FiraCode" ]; })
   ];
 }

@@ -1,11 +1,8 @@
+{ pkgs, config, ... }:
 {
-  pkgs,
-  config,
-  ...
-}: {
   imports = [
     ./mindustry.nix
     ./prism-launcher.nix
   ];
-  home.packages = with pkgs; [gamescope];
+  home.packages = with pkgs; [ gamescope ];
 }

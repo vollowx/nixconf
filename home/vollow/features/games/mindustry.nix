@@ -1,7 +1,4 @@
+{ pkgs, config, ... }:
 {
-  pkgs,
-  config,
-  ...
-}: {
-  home.packages = [pkgs.mindustry];
+  home.packages = [ pkgs.mindustry ];
 }

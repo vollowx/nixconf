@@ -3,12 +3,11 @@
   lib,
   config,
   ...
-}: {
-  imports = [../common];
+}:
+{
+  imports = [ ../common ];
 
-  home.packages = with pkgs; [
-    alacritty
-  ];
+  home.packages = with pkgs; [ alacritty ];
 
   xsession.windowManager.i3 = {
     enable = true;
@@ -18,9 +17,10 @@
         inner = 10;
         outer = 5;
       };
-      keybindings = let
-        modifier = config.xsession.windowManager.i3.config.modifier;
-      in
+      keybindings =
+        let
+          modifier = config.xsession.windowManager.i3.config.modifier;
+        in
         lib.mkOptionDefault {
           "${modifier}+h" = "focus left";
           "${modifier}+j" = "focus down";
@@ -35,7 +35,7 @@
           "${modifier}+b" = "split h";
         };
       modifier = "Mod4";
-      startup = [{command = "fcitx5 -rd";}];
+      startup = [ { command = "fcitx5 -rd"; } ];
       terminal = "alacritty";
     };
   };

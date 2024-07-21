@@ -3,7 +3,8 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   inherit (lib) mkIf;
   packageNames = map (p: p.pname or p.name or null) config.home.packages;
   hasPackage = name: lib.any (x: x == name) packageNames;
@@ -11,7 +12,8 @@
   hasExa = hasPackage "eza";
   hasNeovim = config.programs.neovim.enable;
   hasEmacs = config.programs.emacs.enable;
-in {
+in
+{
   programs.fish = {
     enable = true;
 
@@ -54,9 +56,7 @@ in {
       # Merge history upon doing up-or-search
       # This lets multiple fish instances share history
       up-or-search =
-        /*
-        fish
-        */
+        # fish
         ''
           if commandline --search-mode
             commandline -f history-search-backward
@@ -77,9 +77,7 @@ in {
         '';
     };
     interactiveShellInit =
-      /*
-      fish
-      */
+      # fish
       ''
         # Open command buffer in vim when alt+e is pressed
         bind \ee edit_command_buffer

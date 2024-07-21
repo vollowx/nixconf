@@ -5,18 +5,20 @@
   config,
   pkgs,
   ...
-}: {
-  imports =
-    [
-      ../features/cli
-      ../features/neovim
-    ]
-    ++ (builtins.attrValues outputs.homeManagerModules);
+}:
+{
+  imports = [
+    ../features/cli
+    ../features/neovim
+  ] ++ (builtins.attrValues outputs.homeManagerModules);
 
   nix = {
     package = lib.mkDefault pkgs.nix;
     settings = {
-      experimental-features = ["nix-command" "flakes"];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       warn-dirty = false;
     };
   };
@@ -32,6 +34,6 @@
     username = lib.mkDefault "vollow";
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
     stateVersion = lib.mkDefault "24.11";
-    sessionPath = ["$HOME/.local/bin"];
+    sessionPath = [ "$HOME/.local/bin" ];
   };
 }

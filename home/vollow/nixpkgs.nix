@@ -4,15 +4,15 @@
   lib,
   inputs,
   ...
-}: let
+}:
+let
   flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
-in {
+in
+{
   nix = {
     settings = {
-      substituters = ["https://mirror.sjtu.edu.cn/nix-channels/store"];
-      extra-substituters = [
-        "https://nix-community.cachix.org"
-      ];
+      substituters = [ "https://mirror.sjtu.edu.cn/nix-channels/store" ];
+      extra-substituters = [ "https://nix-community.cachix.org" ];
       extra-trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
@@ -23,7 +23,7 @@ in {
       warn-dirty = false;
       flake-registry = ""; # Disable global flake registry
     };
-    registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
+    registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
   };
 
   home.sessionVariables = {

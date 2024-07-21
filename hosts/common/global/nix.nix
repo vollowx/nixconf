@@ -3,17 +3,17 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
-in {
+in
+{
   nix = {
     package = pkgs.nix;
 
     settings = {
-      substituters = ["https://mirror.sjtu.edu.cn/nix-channels/store"];
-      extra-substituters = [
-        "https://nix-community.cachix.org"
-      ];
+      substituters = [ "https://mirror.sjtu.edu.cn/nix-channels/store" ];
+      extra-substituters = [ "https://nix-community.cachix.org" ];
       extra-trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
@@ -27,9 +27,7 @@ in {
         "flakes"
       ];
       warn-dirty = false;
-      system-features = [
-        "kvm"
-      ];
+      system-features = [ "kvm" ];
       flake-registry = ""; # Disable global flake registry
     };
     gc = {
@@ -40,7 +38,7 @@ in {
     };
 
     # Add each flake input as a registry and nix_path
-    registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
+    registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
     nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
   };
 }
