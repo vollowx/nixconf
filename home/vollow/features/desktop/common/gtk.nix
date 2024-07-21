@@ -1,20 +1,26 @@
 {
   config,
   pkgs,
-  lib,
+  colors,
   ...
 }:
+let
+  is_dark = colors.type == "dark";
+in
 {
   gtk = {
     enable = true;
     theme = {
-      name = "adw-gtk3-dark";
+      name = if is_dark then "adw-gtk3-dark" else "adw-gtk3";
       package = pkgs.adw-gtk3;
     };
     iconTheme = {
-      name = "Papirus-Dark";
+      name = if is_dark then "Papirus-Dark" else "Papirus-Light";
       package = pkgs.papirus-icon-theme;
     };
+    gtk2.configLocation = "/home/vollow/.config/gtk-2.0/gtkrc";
+    gtk3.extraConfig.gtk-application-prefer-dark-theme = if is_dark then 1 else 0;
+    gtk4.extraConfig.gtk-application-prefer-dark-theme = if is_dark then 1 else 0;
   };
 
   services.xsettingsd = {

@@ -1,8 +1,14 @@
-{ inputs, outputs, ... }:
+{
+  inputs,
+  outputs,
+  colors,
+  ...
+}:
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ./systemd-initrd.nix
+    ./console.nix
     ./fish.nix
     ./locale.nix
     ./nix.nix
@@ -13,7 +19,7 @@
 
   home-manager.useGlobalPkgs = true;
   home-manager.extraSpecialArgs = {
-    inherit inputs outputs;
+    inherit inputs outputs colors;
   };
 
   nixpkgs = {
