@@ -1,16 +1,17 @@
 { pkgs, ... }:
 {
   imports = [
-    ./bash.nix
-    ./bat.nix
     ./direnv.nix
+    ./starship.nix
+    ./zoxide.nix
+    ./bash.nix
     ./fish.nix
-    ./gh.nix
+    ./bat.nix
     ./git.nix
+    ./gh.nix
     ./nix-index.nix
     ./pfetch.nix
     ./ssh.nix
-    ./starship.nix
     ./fzf.nix
   ];
   home.packages = with pkgs; [
@@ -43,6 +44,7 @@
     yaml-language-server # YAML LSP
     nixd # Nix LSP
     nixfmt-rfc-style # Nix formatter
+    efm-langserver # General-purpose LSP
     ltex-ls # Spell checking LSP
 
     lazygit
