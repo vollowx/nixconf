@@ -9,6 +9,7 @@ _Configuration for my NixOS_
 - [ ] Setup Steam and Proton at `features/games`
 - [ ] Add a GUI file manager
 - [x] Add CJK, emoji and mono-space fonts
-- [ ] Separate i3 WM import to `hosts/optional`
-- [ ] Add `apple_cursor`
+- [x] Separate i3 WM import to `hosts/optional`
+- [x] Add `apple_cursor`
 - [ ] Setup `distrobox`
+- [ ] Setup `dunst`
