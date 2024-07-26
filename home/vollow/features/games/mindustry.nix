@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 {
-  home.packages = [ pkgs.mindustry ];
+  home.packages = [ pkgs.mindustry-wayland ];
 }

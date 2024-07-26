@@ -4,12 +4,15 @@ let
 in
 {
   imports = [
-    ./alacritty.nix
-    ./discord.nix
-    ./firefox.nix
-    ./font.nix
     ./gtk.nix
     ./qt.nix
+
+    ./alacritty.nix
+    ./discord.nix
+    ./fcitx5.nix
+    ./firefox.nix
+    ./font.nix
+    ./gimp.nix
   ];
 
   home.packages = [ pkgs.libnotify ];
@@ -25,5 +28,14 @@ in
     size = 24;
   };
 
-  xdg.portal.enable = true;
+  xdg = {
+    enable = true;
+    userDirs = {
+      enable = true;
+      createDirectories = true;
+    };
+    portal = {
+      enable = true;
+    };
+  };
 }

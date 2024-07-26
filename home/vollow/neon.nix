@@ -2,7 +2,7 @@
 {
   imports = [
     ./global
-    ./features/desktop/i3
+    ./features/desktop/sway
     ./features/games
     ./features/games/osu.nix
   ];

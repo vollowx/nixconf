@@ -13,6 +13,8 @@
     ../common/optional/systemd-boot.nix
     ../common/optional/tlp.nix
     ../common/optional/pipewire.nix
+    ../common/optional/swaylock.nix
+    ../common/optional/udisks2.nix
   ];
 
   networking.hostName = "neon";
@@ -34,7 +36,7 @@
     enable = true;
     enable32Bit = true;
     extraPackages = with pkgs; [
-      intel-ocl
+      # intel-ocl
       intel-media-driver
 
       libva
@@ -46,15 +48,6 @@
       vulkan-extension-layer
     ];
   };
-
-  services.xserver = {
-    enable = true;
-    windowManager.i3.enable = true;
-  };
-  services.displayManager = {
-    defaultSession = "none+i3";
-  };
-  services.libinput.touchpad.naturalScrolling = true;
 
   system.stateVersion = "24.11";
 }

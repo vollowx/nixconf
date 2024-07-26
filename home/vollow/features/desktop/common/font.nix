@@ -5,7 +5,7 @@
       enable = true;
       defaultFonts = {
         monospace = [
-          "FiraCode Nerd Font"
+          "Lilex Nerd Font"
           "Noto Sans Mono CJK SC"
           "Noto Color Emoji"
         ];
@@ -31,6 +31,6 @@
     noto-fonts-extra
     noto-fonts-emoji
     fira-sans
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    (nerdfonts.override { fonts = [ "Lilex" ]; })
   ];
 }

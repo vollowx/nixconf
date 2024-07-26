@@ -10,10 +10,12 @@
     ./systemd-initrd.nix
     ./console.nix
     ./fish.nix
+    ./gamemode.nix
     ./locale.nix
-    ./nix.nix
-    ./openssh.nix
     ./network.nix
+    ./nix.nix
+    ./nix-ld.nix
+    ./openssh.nix
     ./steam-hardware.nix
   ] ++ (builtins.attrValues outputs.nixosModules);
 
