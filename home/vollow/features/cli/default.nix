@@ -33,7 +33,7 @@
     timer # To help with my ADHD paralysis
 
     gnumake
-    clang # C/C++
+    gcc # C/C++
     clang-tools # C/C++ LSP, formatter and linter
     nodejs # JS/TS
     bun # JS/TS
