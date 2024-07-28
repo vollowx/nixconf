@@ -172,7 +172,7 @@
         "*".hide_cursor = "when-typing enable";
       };
       output = {
-        "*".bg = "~/Downloads/nix-wallpaper.png fill";
+        "*".bg = "~/Downloads/alena-aenami-for-y1900.png fill";
         "eDP-1".scale = "1";
       };
     };
