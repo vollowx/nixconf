@@ -7,8 +7,8 @@
 {
   imports = [
     ../common
-    ./waybar.nix
     ./tofi.nix
+    ./dunst.nix
   ];
 
   home = {
@@ -73,12 +73,7 @@
         };
       };
       startup = [ { command = "fcitx5 -rd"; } ];
-      bars = [
-        {
-          position = "top";
-          command = "waybar";
-        }
-      ];
+      bars = [ ];
       defaultWorkspace = "workspace 1";
       keybindings =
         let
@@ -105,24 +100,26 @@
           "${mod}+Return" = "exec alacritty";
           "${mod}+d" = "exec $(tofi-drun)";
 
-          "XF86AudioMute" = "exec ${pkgs.alsa-utils}/bin/amixer sset Master toggle";
-          "XF86AudioRaiseVolume" = "exec ${pkgs.alsa-utils}/bin/amixer sset Master 5%+";
-          "XF86AudioLowerVolume" = "exec ${pkgs.alsa-utils}/bin/amixer sset Master 5%-";
+          "${mod}+q" = "exec notify-status";
 
-          "${mod}+XF86AudioRaiseVolume" = "exec ${pkgs.alsa-utils}/bin/amixer sset Master 1%+";
-          "${mod}+XF86AudioLowerVolume" = "exec ${pkgs.alsa-utils}/bin/amixer sset Master 1%-";
+          "XF86AudioMute" = "exec volume -t";
+          "XF86AudioRaiseVolume" = "exec volume -i 5";
+          "XF86AudioLowerVolume" = "exec volume -d 5";
+
+          "${mod}+XF86AudioRaiseVolume" = "exec volume -i 1";
+          "${mod}+XF86AudioLowerVolume" = "exec volume -d 1";
 
           "XF86AudioNext" = "exec ${lib.getExe pkgs.playerctl} next";
           "XF86AudioPrev" = "exec ${lib.getExe pkgs.playerctl} previous";
           "XF86AudioPlay" = "exec ${lib.getExe pkgs.playerctl} play-pause";
 
-          "XF86MonBrightnessDown" = "exec ${lib.getExe pkgs.brightnessctl} s 5%-";
-          "XF86MonBrightnessUp" = "exec ${lib.getExe pkgs.brightnessctl} s 5%+";
+          "XF86MonBrightnessDown" = "exec brightness set 5%-";
+          "XF86MonBrightnessUp" = "exec brightness set 5%+";
 
-          "${mod}+XF86MonBrightnessDown" = "exec ${lib.getExe pkgs.brightnessctl} s 1%-";
-          "${mod}+XF86MonBrightnessUp" = "exec ${lib.getExe pkgs.brightnessctl} s 1%+";
+          "${mod}+XF86MonBrightnessDown" = "exec brightness set 1%-";
+          "${mod}+XF86MonBrightnessUp" = "exec brightness set 1%+";
 
-          "${mod}+q" = "kill";
+          "${mod}+Shift+q" = "kill";
           "${mod}+r" = ''mode "resize"'';
           "${mod}+h" = "focus left";
           "${mod}+j" = "focus down";
@@ -139,7 +136,7 @@
           "${mod}+Shift+space" = "focus mode_toggle";
           "${mod}+a" = "focus parent";
           "${mod}+Shift+c" = "reload";
-          "${mod}+Shift+q" = "exit";
+          "${mod}+Shift+e" = "exit";
         };
       colors = {
         focused = {
