@@ -1,5 +1,4 @@
 {
-  inputs,
   outputs,
   lib,
   config,
@@ -10,6 +9,7 @@
   imports = [
     ../features/cli
     ../features/neovim
+    ../features/emacs
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 
   nix = {

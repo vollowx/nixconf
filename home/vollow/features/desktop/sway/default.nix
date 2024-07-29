@@ -98,7 +98,7 @@
           "${mod}+Shift+Alt+p" = ''exec ${lib.getExe pkgs.grim} -c ~/pictures/screenshots/$(date "+%Y%m%d"_"%Hh%Mm%Ss"_grim).png '';
 
           "${mod}+Return" = "exec alacritty";
-          "${mod}+d" = "exec $(tofi-drun)";
+          "${mod}+d" = "exec $(tofi-run)";
 
           "${mod}+q" = "exec notify-status";
 
