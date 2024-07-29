@@ -16,7 +16,7 @@
   ];
   home.packages = with pkgs; [
     comma # Install and run programs by sticking a , before them
-    distrobox # Nice escape hatch, integrates docker images with my environment
+    distrobox # Use stuffs on other distro
     nh # Nice wrapper for NixOS and HM
     nvd # Diff viewer for nh
     nom # Process monitor for nh
@@ -29,8 +29,9 @@
     fd # Better find
     httpie # Better curl
     diffsitter # Better diff
+    timer # Bettwe sleep
     jq # JSON pretty printer and manipulator
-    timer # To help with my ADHD paralysis
+    tmux # Terminal multiplexer
 
     gnumake
     gcc # C/C++
@@ -47,7 +48,6 @@
     efm-langserver # General-purpose LSP
     ltex-ls # Spell checking LSP
 
-    lazygit
     speedtest-cli # Network speedtest by Ookla
   ];
 }
