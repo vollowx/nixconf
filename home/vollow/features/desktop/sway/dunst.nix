@@ -45,19 +45,22 @@ let
     fi
   '';
 
-  brightness = let brightnessctl = pkgs.brightnessctl + "/bin/brightnessctl";
-  in pkgs.writeShellScriptBin "brightness" ''
-    #!/usr/bin/env bash
+  brightness =
+    let
+      brightnessctl = pkgs.brightnessctl + "/bin/brightnessctl";
+    in
+    pkgs.writeShellScriptBin "brightness" ''
+      #!/usr/bin/env bash
 
-    ${brightnessctl} "$@"
-    brightness=$(echo $(($(${brightnessctl} g) * 100 / $(${brightnessctl} m))))
+      ${brightnessctl} "$@"
+      brightness=$(echo $(($(${brightnessctl} g) * 100 / $(${brightnessctl} m))))
 
-    ${notify-send} -r 69 \
-      -a "Brightness" "Currently at $brightness%" \
-      -h int:value:"$brightness" \
-      -t 888 \
-      -u low
-  '';
+      ${notify-send} -r 69 \
+        -a "Brightness" "Currently at $brightness%" \
+        -h int:value:"$brightness" \
+        -t 888 \
+        -u low
+    '';
 
   status = pkgs.writeShellScriptBin "notify-status" ''
     #!/usr/bin/env bash
@@ -75,8 +78,14 @@ let
       -t 888 \
       -u low
   '';
-in {
-  home.packages = [ volume microphone brightness status ];
+in
+{
+  home.packages = [
+    volume
+    microphone
+    brightness
+    status
+  ];
 
   services.dunst = {
     enable = true;
@@ -103,8 +112,7 @@ in {
         gap_size = 10;
 
         font = "monospace 12";
-        format =
-          "<span font_desc='monospace 12' weight='bold' foreground='#${colors.subtext0}'><i>%a</i></span>\\n%s\\n%b";
+        format = "<span font_desc='monospace 12' weight='bold' foreground='#${colors.subtext0}'><i>%a</i></span>\\n%s\\n%b";
         show_indicators = false;
         mouse_left_click = "do_action";
         mouse_middle_click = "close_all";
