@@ -31,13 +31,14 @@ in
       hms = "home-manager --flake . switch";
 
       ls = mkIf hasExa "eza";
-      exa = mkIf hasExa "eza";
+      ll = mkIf hasExa "eza -l";
+      la = mkIf hasExa "eza -la";
+      tree = mkIf hasExa "eza --tree";
 
       e = mkIf hasEmacs "emacsclient -t";
 
       vim = mkIf hasNeovim "nvim";
       vi = vim;
-      v = vim;
     };
     shellAliases = {
       # Clear screen and scrollback
