@@ -1,0 +1,60 @@
+* Nix Configuration
+
+** Introduction
+
+   This is my personal Nix configuration for my machines. It is based on NixOS
+   and Home Manager, and is managed by Nix Flakes.
+
+** TODOs
+
+*** DONE Separate per machine configs under `nixos` and `home-manager`
+*** DONE Bring Neovim configs back
+    Note that the configs are at a separate repo now at [[https://github.com/vollowx/nvimconf][vollowx/nvimconf]].
+*** DONE Separate i3 WM import to `hosts/optional`
+*** DONE Add CJK, emoji and mono-space fonts
+*** TODO Setup Steam and Proton at `features/games`
+*** DONE Add `apple_cursor`
+*** TODO Setup `distrobox`
+*** DONE Setup `dunst`
+*** DONE Setup `nix-ld`
+    Now `nix-ld-rust` actually
+*** DONE Embed `tofi` in `waybar`
+    Now due to `waybar` is no longer used, this appearance has been removed.
+*** TODO Setup a graphical file manager
+
+** Instllation
+
+   Install a minimal NixOS first, them clone this repo and run
+
+   #+begin_src sh
+   nixos-rebuild switch --flake .#<hostname>
+   #+end_src
+
+   to install the configurations.
+
+   After you've got the configured system, you can replace that with
+
+   #+begin_src sh
+   nh os switch .
+   #+end_src
+
+   for NixOS-level rebuilds, and
+
+   #+begin_src sh
+   nh home switch .
+   #+end_src
+
+   for Home Manager-level rebuilds.
+
+   To update the system, you can run
+
+   #+begin_src sh
+   nix flake update
+   #+end_src
+
+   first, then run the above commands.
+
+** Acknowledgements
+
+   - [[https://github.com/misterio77/nix-config][misterio77/nix-config]] (for the initial inspiration)
+   - [[https://github.com/idm1try/dotfiles][idm1try/dotfiles]] (for the beautiful yet simple UI)
