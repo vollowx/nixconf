@@ -19,14 +19,6 @@
 
   networking.hostName = "neon";
 
-  boot = {
-    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
-    binfmt.emulatedSystems = [
-      "aarch64-linux"
-      "i686-linux"
-    ];
-  };
-
   programs = {
     adb.enable = true;
     dconf.enable = true;

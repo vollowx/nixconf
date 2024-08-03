@@ -13,6 +13,7 @@ in
     ./firefox.nix
     ./font.nix
     ./gimp.nix
+    ./tauon.nix
   ];
 
   home.packages = [ pkgs.libnotify ];
