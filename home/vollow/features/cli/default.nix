@@ -19,7 +19,6 @@
     distrobox # Use stuffs on other distro
     nh # Nice wrapper for NixOS and HM
     nvd # Diff viewer for nh
-    nom # Process monitor for nh
 
     bc # Calculator
     bottom # System viewer
