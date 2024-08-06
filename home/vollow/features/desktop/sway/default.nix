@@ -42,11 +42,22 @@
       bindkeysToCode = true;
       window = {
         titlebar = false;
-        border = 1;
+        border = 2;
+        commands = [
+          {
+            command = "floating enable";
+            criteria = { class = ".*"; };
+          }
+          {
+            command = "floating enable";
+            criteria = { app_id = ".*"; };
+          }
+        ];
       };
       floating = {
         titlebar = false;
-        border = 1;
+        border = 2;
+        modifier = "Mod4";
       };
       gaps = {
         inner = 10;
@@ -55,7 +66,6 @@
       input = {
         "type:keyboard" = {
           xkb_layout = "us";
-          xkb_options = "ctrl:nocaps";
           repeat_delay = "200";
           repeat_rate = "30";
         };
@@ -81,8 +91,8 @@
           concatAttrs = lib.fold (x: y: x // y) { };
           tagBinds = concatAttrs (
             map (i: {
-              "${mod}+${toString i}" = "exec 'swaymsg workspace ${toString i}'";
-              "${mod}+Shift+${toString i}" = "exec 'swaymsg move container to workspace ${toString i}'";
+              "${mod}+${toString i}" = "workspace ${toString i}";
+              "${mod}+Shift+${toString i}" = "move container to workspace ${toString i}";
             }) (lib.range 1 9)
           );
         in
@@ -99,6 +109,7 @@
 
           "${mod}+Return" = "exec alacritty";
           "${mod}+d" = "exec $(tofi-run)";
+          "${mod}+Shift+q" = "kill";
 
           "${mod}+q" = "exec notify-status";
 
@@ -119,7 +130,6 @@
           "${mod}+XF86MonBrightnessDown" = "exec brightness set 1%-";
           "${mod}+XF86MonBrightnessUp" = "exec brightness set 1%+";
 
-          "${mod}+Shift+q" = "kill";
           "${mod}+r" = ''mode "resize"'';
           "${mod}+h" = "focus left";
           "${mod}+j" = "focus down";
@@ -137,6 +147,8 @@
           "${mod}+a" = "focus parent";
           "${mod}+Shift+c" = "reload";
           "${mod}+Shift+e" = "exit";
+          "${mod}+Shift+minus" = "move scratchpad";
+          "${mod}+minus" = "scratchpad show";
         };
       colors = {
         focused = {

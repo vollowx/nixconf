@@ -10,7 +10,7 @@
         };
         dynamic_padding = true;
       };
-      font.size = 16;
+      font.size = 14;
       cursor.style.shape = "Underline";
       colors = {
         primary = {

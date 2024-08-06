@@ -19,6 +19,7 @@
     distrobox # Use stuffs on other distro
     nh # Nice wrapper for NixOS and HM
     nvd # Diff viewer for nh
+    nix-output-monitor # Monitor for nh
 
     bc # Calculator
     bottom # System viewer
@@ -31,6 +32,7 @@
     timer # Bettwe sleep
     jq # JSON pretty printer and manipulator
     tmux # Terminal multiplexer
+    fastfetch # System info
 
     gnumake
     gcc # C/C++
@@ -48,5 +50,6 @@
     ltex-ls # Spell checking LSP
 
     speedtest-cli # Network speedtest by Ookla
+    spotdl # Spotify downloader
   ];
 }
