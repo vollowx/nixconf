@@ -1,11 +1,10 @@
 {
   config,
   pkgs,
-  colors,
   ...
 }:
 let
-  is_dark = colors.type == "dark";
+  is_dark = true;
 in
 {
   gtk = {

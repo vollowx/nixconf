@@ -1,6 +1,6 @@
-{ pkgs, colors, ... }:
+{ pkgs, ... }:
 let
-  is_dark = colors.type == "dark";
+  is_dark = true;
 in
 {
   imports = [

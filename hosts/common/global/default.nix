@@ -1,14 +1,13 @@
 {
   inputs,
   outputs,
-  colors,
   ...
 }:
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
+    inputs.catppuccin.nixosModules.catppuccin
     ./systemd-initrd.nix
-    ./console.nix
     ./fish.nix
     ./gamemode.nix
     ./locale.nix
@@ -21,7 +20,7 @@
 
   home-manager.useGlobalPkgs = true;
   home-manager.extraSpecialArgs = {
-    inherit inputs outputs colors;
+    inherit inputs outputs;
   };
 
   nixpkgs = {
@@ -32,4 +31,6 @@
   };
 
   hardware.enableRedistributableFirmware = true;
+
+  console.catppuccin.enable = true;
 }

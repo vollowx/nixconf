@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  colors,
   ...
 }:
 {
@@ -39,21 +38,6 @@
     '';
     wrapperFeatures.gtk = true;
     config = {
-      bindkeysToCode = true;
-      window = {
-        titlebar = false;
-        border = 2;
-        commands = [
-          {
-            command = "floating enable";
-            criteria = { class = ".*"; };
-          }
-          {
-            command = "floating enable";
-            criteria = { app_id = ".*"; };
-          }
-        ];
-      };
       floating = {
         titlebar = false;
         border = 2;
@@ -101,11 +85,13 @@
           "${mod}+o" = "exec ${lib.getExe pkgs.hyprpicker} -a -n";
           "${mod}+0" = "exec swaylock -f";
 
-          "${mod}+p" = ''exec ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp} -b ${colors.mantle}80 -c 00000000)" -| wl-copy -t image/png'';
-          "${mod}+Shift+p" = "exec ${lib.getExe pkgs.grim} -c - | wl-copy -t image/png";
+          # FIXME: Replace 00000080 with colors.mantle
+          "print" = ''exec ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp} -b 00000080 -c 00000000)" -| wl-copy -t image/png'';
+          "Shift+print" = "exec ${lib.getExe pkgs.grim} -c - | wl-copy -t image/png";
 
-          "${mod}+Alt+p" = ''exec ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp} -b ${colors.mantle}80 -c 00000000)" ~/pictures/screenshots/$(date "+%Y%m%d"_"%Hh%Mm%Ss"_grim).png'';
-          "${mod}+Shift+Alt+p" = ''exec ${lib.getExe pkgs.grim} -c ~/pictures/screenshots/$(date "+%Y%m%d"_"%Hh%Mm%Ss"_grim).png '';
+          # FIXME: Replace 00000080 with colors.mantle
+          "Alt+print" = ''exec ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp} -b 00000080 -c 00000000)" ~/pictures/screenshots/$(date "+%Y%m%d"_"%Hh%Mm%Ss"_grim).png'';
+          "Shift+Alt+print" = ''exec ${lib.getExe pkgs.grim} -c ~/pictures/screenshots/$(date "+%Y%m%d"_"%Hh%Mm%Ss"_grim).png '';
 
           "${mod}+Return" = "exec alacritty";
           "${mod}+d" = "exec $(tofi-run)";
@@ -140,52 +126,27 @@
           "${mod}+Shift+k" = "move up";
           "${mod}+Shift+l" = "move right";
           "${mod}+e" = "layout toggle split";
+          "${mod}+w" = "layout tabbed";
+          "${mod}+b" = "splith";
+          "${mod}+v" = "splitv";
           "${mod}+f" = "fullscreen";
-          "${mod}+space" = "floating toggle";
-          "${mod}+Shift+s" = "sticky toggle";
-          "${mod}+Shift+space" = "focus mode_toggle";
           "${mod}+a" = "focus parent";
-          "${mod}+Shift+c" = "reload";
-          "${mod}+Shift+e" = "exit";
+          "${mod}+p" = "sticky toggle";
+          "${mod}+Shift+space" = "focus mode_toggle";
+          "${mod}+space" = "floating toggle";
           "${mod}+Shift+minus" = "move scratchpad";
           "${mod}+minus" = "scratchpad show";
+          "${mod}+Shift+c" = "reload";
+          "${mod}+Shift+e" = "exit";
         };
-      colors = {
-        focused = {
-          background = "#${colors.base}";
-          indicator = "#${colors.rosewater}";
-          border = "#${colors.mauve}";
-          text = "#${colors.mauve}";
-          childBorder = "#${colors.mauve}";
-        };
-        focusedInactive = {
-          background = "#${colors.base}";
-          indicator = "#${colors.rosewater}";
-          border = "#${colors.overlay0}";
-          text = "#${colors.mauve}";
-          childBorder = "#${colors.overlay0}";
-        };
-        unfocused = {
-          background = "#${colors.base}";
-          indicator = "#${colors.rosewater}";
-          border = "#${colors.overlay0}";
-          text = "#${colors.mauve}";
-          childBorder = "#${colors.overlay0}";
-        };
-        urgent = {
-          background = "#${colors.base}";
-          indicator = "#${colors.overlay0}";
-          border = "#${colors.peach}";
-          text = "#${colors.peach}";
-          childBorder = "#${colors.peach}";
-        };
-      };
       seat = {
         "*".hide_cursor = "when-typing enable";
       };
       output = {
-        "*".bg = "~/Downloads/alena-aenami-for-y1900.png fill";
-        "eDP-1".scale = "1";
+        "eDP-1" = {
+          scale = "1";
+          bg = "~/Downloads/beach-and-girls.png fill";
+        };
       };
     };
   };
@@ -194,7 +155,7 @@
     settings = {
       no-unlock-indicator = true;
       ignore-empty-password = true;
-      color = "${colors.crust}";
+      color = "000000";
     };
   };
 }
