@@ -132,8 +132,8 @@
           "${mod}+f" = "fullscreen";
           "${mod}+a" = "focus parent";
           "${mod}+p" = "sticky toggle";
-          "${mod}+Shift+space" = "focus mode_toggle";
-          "${mod}+space" = "floating toggle";
+          "${mod}+Shift+space" = "floating toggle";
+          "${mod}+space" = "focus mode_toggle";
           "${mod}+Shift+minus" = "move scratchpad";
           "${mod}+minus" = "scratchpad show";
           "${mod}+Shift+c" = "reload";

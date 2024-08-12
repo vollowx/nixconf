@@ -7,6 +7,7 @@
     ./bash.nix
     ./fish.nix
     ./bat.nix
+    ./bottom.nix
     ./git.nix
     ./gh.nix
     ./nix-index.nix
@@ -22,7 +23,6 @@
     nix-output-monitor # Monitor for nh
 
     bc # Calculator
-    bottom # System viewer
     ncdu # TUI disk usage
     eza # Better ls
     ripgrep # Better grep

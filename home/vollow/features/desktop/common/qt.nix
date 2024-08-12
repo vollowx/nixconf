@@ -1,10 +1,7 @@
-{ pkgs, ... }:
 {
   qt = {
     enable = true;
-    platformTheme = {
-      name = "gtk3";
-      package = pkgs.qt6.qtbase;
-    };
+    style = { name = "kvantum"; };
+    platformTheme = { name = "kvantum"; };
   };
 }

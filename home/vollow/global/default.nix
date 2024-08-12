@@ -41,12 +41,14 @@
 
   i18n.inputMethod.fcitx5.catppuccin.enable = true;
   programs.alacritty.catppuccin.enable = true;
+  programs.bottom.catppuccin.enable = true;
   programs.fish.catppuccin.enable = true;
   programs.fzf.catppuccin.enable = true;
   programs.git.delta.catppuccin.enable = true;
   programs.starship.catppuccin.enable = true;
   programs.tmux.catppuccin.enable = true;
   programs.tofi.catppuccin.enable = true;
+  qt.style.catppuccin.enable = true;
   services.dunst.catppuccin.enable = true;
   wayland.windowManager.sway.catppuccin.enable = true; # FIXME: Doesn't work at all, it's overriden by the later config
 }
